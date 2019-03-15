@@ -38,6 +38,7 @@ let numbers = [4, 6, 10];
 function addNums(num1, num2, num3) {
   return num1 + num2 + num3;
 }
+var result = addNums([...colors]); 
 
 // code here
 

@@ -39,15 +39,14 @@
   Inside the function showValues, write a for in loop that concatenates each of the property values and returns the concatenated string.
 */
 
+
 function showValues( obj ) {
- var str = " "; 
-  for (var prop in obj) {
-   str += obj[prop] 
-  }
-  return str 
+  let str = "";
+  for (let key in obj) {
+    str = str + obj[key];
+  }  
+  return str
 }
-
-
 
 ////////// PROBLEM 2 //////////
 
@@ -94,15 +93,17 @@ var double = (obj) => {
   By the end of the for in loop, you should have a sentence, return that sentence.
 */
 
-var secrets = (obj) => {
-  var str = ' ' ; 
-  for (var prop in obj) {
-    if (prop.substr(0,2) === 'sh') {
-      str += obj[prop]
+
+const secrets = (obj) => {
+  let sentence = '';
+  for (let key in obj) {
+    if (key.startsWith('sh')) {
+      sentence = sentence + obj[key]
     }
   }
-  return str 
+  return sentence
 }
+
 
 
 /* 
@@ -132,12 +133,9 @@ var secrets = (obj) => {
   Delete the property password and return the object.
 */
 
-const removePassword = (obje) => {
-  for (var key in obje) {
-    delete obje[password]; 
-  } 
-  return obje[key]
-
+var removePassword = (obj) => {
+    delete obj.password;  
+  return obj 
 }
 
 
@@ -155,13 +153,16 @@ var deleteTheBigNumbers = {
 /*
   Write a for in loop that deletes every property from the object deleteTheBigNumbers whose value is greater than 100.
 */
-
-for (var prop in deleteTheBigNumbers) {
-  if (prop > 100) {
-    delete  deleteTheBigNumbers[prop] 
+const bigNum = (obj) => {
+for (let prop in obj) {
+  if (obj[prop] > 100) {
+    delete obj[prop]; 
+    }
   }
-}
+  return obj 
+} 
 
+bigNum(deleteTheBigNumbers); 
 
 ////////// PROBLEM 7 //////////
 
@@ -172,11 +173,13 @@ for (var prop in deleteTheBigNumbers) {
   Return the updated object.
 */
 
-const statsWithk = (objects) => {
-  for (var prop in objects) {
-    if (prop.includes("k")) {
+const startsWithK = (obj) => {
+  for (var prop in obj) {
+    if (prop.startsWith('k')) {
+     delete obj[prop]; 
     }
   }
+  return obj
 }
 
 
@@ -191,3 +194,12 @@ const statsWithk = (objects) => {
   (hint: the method includes() may be of use...)
 */
 
+const hiddenTreasure = (obj) => {
+  for (var key in obj) {
+    if (!key.includes("treasure")) {
+      delete obj[key];
+    }
+  }
+
+  return obj 
+}
